@@ -49,8 +49,8 @@ check_error "Обновление системных пакетов"
 
 # 4. Обновление AUR
 if command -v yay &> /dev/null; then
-    echo -e "${YELLOW}Обновление AUR-пакетов...${NC}"
-    yay -Su --aur --noconfirm --ignore ${IGNORED_APP}
+    echo -e "${YELLOW}Обновление AUR-пакетов...${NC}"    
+    yay -Su --aur --noconfirm ${IGNORED_APP:+--ignore "$IGNORED_APP"}
     check_error "Обновление AUR-пакетов"
 else
     echo -e "${YELLOW}yay не установлен. Пропуск AUR.${NC}"
