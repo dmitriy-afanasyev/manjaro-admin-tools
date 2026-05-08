@@ -14,7 +14,7 @@
 
 ### Атоматический режим
 
-_(Может не работать благодаря дементорам из РНК)_
+_(Может не работать благодаря дементорам из PKН)_
 
 ```bash
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/dmitriy-afanasyev/manjaro-admin-tools/main/install.sh)"
