@@ -23,9 +23,9 @@ sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dmitriy-afanas
 ### Вручную
 
 ```bash
-sudo mkdir -p /opt/manjaro-admin-tools
-cd /opt/manjaro-admin-tools
-sudo git clone https://github.com/dmitriy-afanasyev/manjaro-admin-tools.git .
-sudo chmod +x update-manjaro.sh
+sudo git clone https://github.com/dmitriy-afanasyev/manjaro-admin-tools.git /opt/manjaro-admin-tools
+sudo chmod +x /opt/manjaro-admin-tools/update-manjaro.sh
 sudo ln -sf /opt/manjaro-admin-tools/update-manjaro.sh /usr/local/bin/update-manjaro
 ```
+
+Теперь вы можете запускать утилиту из любого места командой: `update-manjaro`
