@@ -14,6 +14,8 @@
 
 ### Атоматический режим
 
+_(Может не работать благодаря дементорам из РНК)_
+
 ```bash
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/dmitriy-afanasyev/manjaro-admin-tools/main/install.sh)"
 ```
@@ -21,14 +23,11 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/dmitriy-afanasyev/m
 ### Вручную
 
 ```bash
-mkdir -p /opt/manjaro-admin-tools
+sudo mkdir -p /opt/manjaro-admin-tools
 cd /opt/manjaro-admin-tools
-git clone https://github.com/dmitriy-afanasyev/manjaro-admin-tools.git .
-chmod +x update-manjaro.sh
-```
+sudo git clone https://github.com/dmitriy-afanasyev/manjaro-admin-tools.git .
+sudo chmod +x update-manjaro.sh
 
-Создать ярлык быстрого запуска
-
-```bash
-sudo ln -s /opt/manjaro-admin-tools/update-manjaro.sh /usr/local/bin/update-manjaro
+# Создать ярлык быстрого запуска
+sudo ln -sf /opt/manjaro-admin-tools/update-manjaro.sh /usr/local/bin/update-manjaro
 ```
