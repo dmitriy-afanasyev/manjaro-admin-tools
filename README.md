@@ -12,9 +12,23 @@
 
 ## 📥 Как клонировать и запустить
 
+### Атоматический режим
+
 ```bash
-git clone https://github.com/dmitriy-afanasyev/manjaro-admin-tools.git
-cd manjaro-admin-tools
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/dmitriy-afanasyev/manjaro-admin-tools/main/install.sh)"
+```
+
+### Вручную
+
+```bash
+mkdir -p /opt/manjaro-admin-tools
+cd /opt/manjaro-admin-tools
+git clone https://github.com/dmitriy-afanasyev/manjaro-admin-tools.git .
 chmod +x update-manjaro.sh
-./update-manjaro.sh
+```
+
+Создать ярлык быстрого запуска
+
+```bash
+sudo ln -s /opt/manjaro-admin-tools/update-manjaro.sh /usr/local/bin/update-manjaro
 ```
