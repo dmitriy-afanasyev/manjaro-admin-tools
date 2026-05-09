@@ -3,13 +3,16 @@
 # Скрипт для полного обновления Manjaro Linux
 # с разделением прав для sudo и пользовательских команд
 
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+cd "$SCRIPT_DIR" || exit 1
+
 # Цвета для вывода
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
-ENV_FILE="$(dirname "$0")/.env"   # ищем .env в той же папке, что и скрипт
+ENV_FILE="$SCRIPT_DIR/.env"
 if [ -f "$ENV_FILE" ]; then
     set -a
     source "$ENV_FILE"
