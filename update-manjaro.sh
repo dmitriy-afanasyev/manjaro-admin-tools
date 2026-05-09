@@ -35,22 +35,18 @@ check_error() {
 
 echo -e "${GREEN}=== Начато обновление Manjaro ===${NC}"
 
-# 1. Обновление зеркал (требует sudo)
+# Обновление зеркал (требует sudo)
 echo -e "${YELLOW}Обновление зеркал...${NC}"
 sudo pacman-mirrors --fasttrack --api --protocol https
 check_error "Обновление зеркал"
 
-# 2. Обновление базы данных (требует sudo)
-echo -e "${YELLOW}Синхронизация базы данных...${NC}"
-sudo pacman -Sy
-check_error "Синхронизация базы данных"
+# Полное обновление системы (требует sudo)
+echo -e "${YELLOW}Полное обновление системы...${NC}"
+# --ask=4 - "подтвердить замену пакета"
+sudo pacman -Syu --noconfirm --ask=4
+check_error "Полное обновление системы"
 
-# 3. Обновление официальных пакетов (требует sudo)
-echo -e "${YELLOW}Обновление системных пакетов...${NC}"
-sudo pacman -Su --noconfirm
-check_error "Обновление системных пакетов"
-
-# 4. Обновление AUR
+# Обновление AUR
 if command -v yay &> /dev/null; then
     echo -e "${YELLOW}Обновление AUR-пакетов...${NC}"    
     yay -Su --aur --noconfirm ${IGNORED_APP:+--ignore "$IGNORED_APP"}
@@ -59,7 +55,7 @@ else
     echo -e "${YELLOW}yay не установлен. Пропуск AUR.${NC}"
 fi
 
-# 5. Очистка кэша (разделяем sudo и пользовательские команды)
+# Очистка кэша (разделяем sudo и пользовательские команды)
 echo -e "${YELLOW}Очистка кэша...${NC}"
 
 # Системный кэш (требует sudo)
@@ -80,12 +76,12 @@ check_error "Очистка старых версий пакетов"
 rm -rf ~/.cache/*
 check_error "Очистка пользовательского кэша"
 
-# 6. Проверка на битые пакеты
+# Проверка на битые пакеты
 echo -e "${YELLOW}Проверка на битые пакеты...${NC}"
 sudo pacman -Qknq || echo -e "${RED}Внимание: найдены повреждённые пакеты!${NC}"
 check_error "Проверка пакетов"
 
-# 7. Проверка занятого места
+# Проверка занятого места
 echo -e "${YELLOW}Итоговое использование диска:${NC}"
 df -h /
 
